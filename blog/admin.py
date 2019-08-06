@@ -6,12 +6,20 @@ class CategoryAdmin(admin.ModelAdmin):
     pass
 
 
+class CommentInline(admin.TabularInline):
+    model = Comment
+    extra = 1
+
+
 class PostAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['title', 'created_on', 'last_modified']
+    list_filter = ['created_on']
+    search_fields = ['title']
+    inlines = [CommentInline]
 
 
 class CommentAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['author', 'created_on', 'post']
 
 
 admin.site.register(Category, CategoryAdmin)
