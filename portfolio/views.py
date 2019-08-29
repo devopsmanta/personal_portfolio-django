@@ -1,5 +1,5 @@
-from django.shortcuts import render
 from django.views import generic
+
 from .models import Project
 
 
@@ -12,5 +12,3 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Project
     template_name = 'portfolio/detail.html'
-
-
